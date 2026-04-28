@@ -2,7 +2,9 @@
 
 ## 0. Workflow
 
-- 작업이 끝나면 conventional git commit을 **영어로 제안**합니다. 필요한 경우 타이틀 뿐 아니라 본문도 작성할 수 있습니다.
+- 작업이 끝나면 conventional git commit을 **영어로 제안**합니다.
+  - 커밋 메시지를 추천하기 전, 반드시 `git log`로 최근 히스토리를 확인하고 현재 스테이징된 파일(`git diff --cached`)을 점검하여 맥락에 맞는 메시지를 작성하세요.
+  - 필요한 경우 타이틀 뿐 아니라 본문도 작성할 수 있습니다.
 
 ## 1. Tech Stack
 
