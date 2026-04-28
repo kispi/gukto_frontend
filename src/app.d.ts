@@ -9,8 +9,8 @@ declare global {
 		// interface Platform {}
 	}
 	interface Window {
-		naver: any;
+		naver: typeof naver
 	}
 }
 
-export {};
+export {}

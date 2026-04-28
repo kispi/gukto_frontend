@@ -8,7 +8,6 @@
 	let { children } = $props()
 
 	let mapElement: HTMLDivElement | null = $state(null)
-	let mapInstance: any = $state(null)
 	let isMapLoaded = $state(false)
 
 	onMount(() => {
@@ -25,7 +24,7 @@
 		script.onload = () => {
 			isMapLoaded = true
 			if (mapElement && window.naver && window.naver.maps) {
-				mapInstance = new window.naver.maps.Map(mapElement, {
+				new window.naver.maps.Map(mapElement, {
 					center: new window.naver.maps.LatLng(37.5666805, 126.9784147), // 서울시청 기본 좌표
 					zoom: 15,
 					mapTypeControl: true
