@@ -5,6 +5,7 @@ import { onMount } from 'svelte'
 export const useNaverMap = () => {
 	let isLoaded = $state(false)
 	let mapInstance = $state<naver.maps.Map | null>(null)
+	let bounds = $state<{ sw: naver.maps.LatLng; ne: naver.maps.LatLng } | null>(null)
 
 	const loadScript = () => {
 		const clientId = env.PUBLIC_NAVER_ID
@@ -37,6 +38,13 @@ export const useNaverMap = () => {
 			mapTypeControl: true,
 			...options,
 		})
+
+		// idle 이벤트 리스너 등록
+		window.naver.maps.Event.addListener(mapInstance, 'idle', () => {
+			if (!mapInstance) return
+			const b = mapInstance.getBounds() as naver.maps.LatLngBounds
+			bounds = { sw: b.getSW(), ne: b.getNE() }
+		})
 	}
 
 	onMount(() => {
@@ -52,6 +60,9 @@ export const useNaverMap = () => {
 		},
 		get mapInstance() {
 			return mapInstance
+		},
+		get bounds() {
+			return bounds
 		},
 		initMap,
 	}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { useNaverMap } from '$lib/hooks/useNaverMap.svelte'
+	import { handleMapIdle } from '$lib/map/GMapHandlers'
 
 	let mapElement: HTMLDivElement | null = $state(null)
 	const naverMap = useNaverMap()
@@ -7,6 +8,13 @@
 	$effect(() => {
 		if (naverMap.isLoaded && mapElement && !naverMap.mapInstance) {
 			naverMap.initMap(mapElement)
+		}
+	})
+
+	// 지도 영역(bounds)이 변경될 때마다 실행될 비즈니스 로직
+	$effect(() => {
+		if (naverMap.bounds && naverMap.mapInstance) {
+			handleMapIdle(naverMap.mapInstance)
 		}
 	})
 </script>
