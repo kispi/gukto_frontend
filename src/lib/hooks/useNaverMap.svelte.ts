@@ -8,9 +8,9 @@ export const useNaverMap = () => {
 	let bounds = $state<{ sw: naver.maps.LatLng; ne: naver.maps.LatLng } | null>(null)
 
 	const loadScript = () => {
-		const clientId = env.PUBLIC_NAVER_ID
+		const clientId = env.NCP_API_ID
 		if (!clientId) {
-			console.error('PUBLIC_NAVER_ID is missing')
+			console.error('NCP_API_ID is missing')
 			return
 		}
 

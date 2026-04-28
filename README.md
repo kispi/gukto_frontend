@@ -24,7 +24,7 @@ npm install
 
 ```env
 # Naver Maps API V3 Client ID
-PUBLIC_NAVER_ID=your_client_id_here
+NCP_API_ID=your_client_id_here
 
 # Go Backend REST API Endpoint
 PUBLIC_API_URL=http://localhost:8080
