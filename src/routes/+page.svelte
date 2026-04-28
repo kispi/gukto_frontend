@@ -1,7 +1,7 @@
 <script lang="ts">
-	// Root page content if necessary. Currently, the layout handles the map rendering.
+	import GMap from '$lib/components/GMap.svelte'
 </script>
 
-<div class="root-page">
-	<!-- For future main page UI elements -->
+<div class="page-root h-full w-full">
+	<GMap />
 </div>

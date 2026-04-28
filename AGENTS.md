@@ -48,3 +48,8 @@
 
 - 코드가 길어지거나 하위 컴포넌트가 파생될 경우, 즉시 폴더를 생성하여 관련된 코드(컴포넌트, 타입, 유틸)를 Co-location(밀집) 시킵니다.
 - 비즈니스 로직(데이터 파싱, 계산 로직 등)은 Svelte 컴포넌트 내부에 두지 않고 외부 `.ts` 파일로 분리하여 테스트 가능하게 작성합니다.
+- **Hook Return Pattern:** Svelte 5 커스텀 훅(Runes 기반)에서 상태를 반환할 때, primitive 값의 반응성을 유지하면서 중첩 없이(`hook.isLoaded`) 접근하기 위해 **getter 패턴**을 사용하는 것을 권장합니다.
+  - ✅ `return { get count() { return count }, inc() { ... } };` (중첩 없이 반응성 유지)
+  - ❌ `let count = $state(0); return { count };` (반응성 소실)
+  - 만약 상태가 많고 구조가 복잡하다면 하나의 `$state` 객체에 담아 반환할 수도 있으나, 사용 편의성을 위해 가급적 flat한 구조를 유지합니다.
+- **Formatting:** No semicolons, use single quotes, and **always use trailing commas** (Prettier config: `trailingComma: 'all'`).
