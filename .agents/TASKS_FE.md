@@ -5,21 +5,21 @@
 
 **아래의 태스크들은 대략적인 로드맵이며, 프로젝트 진행 상황에 따라 꾸준히 업데이트되고 변경될 수 있습니다.**
 
-## Phase 1: Foundation & Base UI (환경 및 기반 컴포넌트)
+## Phase 1: Foundation & Base UI (환경 및 기반 컴포넌트) - ✅ 완료
 
-- [ ] build: SvelteKit, Tailwind 스캐폴딩 및 `adapter-node` 설정
-- [ ] config: ESLint, Prettier, Husky(commitlint) 룰 세팅 (No `function`, No Semicolon 등)
+- [x] build: SvelteKit, Tailwind 스캐폴딩 및 `adapter-node` 설정
+- [x] config: ESLint, Prettier, Husky(commitlint) 룰 세팅 (No `function`, No Semicolon 등)
+- [x] feat: 커스텀 Fetch 래퍼(`apiClient.ts`) 구현 (Base URL 및 에러 핸들링)
 - [ ] feat: Svelte 5 Runes(`$state`) 기반 전역 Modal, Toast 스토어(`modalStore.ts`) 및 렌더러 구현
-- [ ] feat: 커스텀 Fetch 래퍼(`apiClient.ts`) 구현 (Base URL 및 에러 핸들링)
 - [ ] feat: 기본 헤드리스 UI 컴포넌트(`GButton`, `GInput`, `GDropdown`) 뼈대 작성
 
-## Phase 2: Core Map Layout & Search (VIP 1 - 지도 및 검색)
+## Phase 2: Core Map Layout & Search (VIP 1 - 지도 및 검색) - 🚧 진행 중
 
-- [ ] feat: `+layout.svelte`에 Naver Maps API V3 스크립트 로드 및 전체 화면 맵 마운트 로직 추가
+- [x] feat: `+layout.svelte`에 Naver Maps API V3 스크립트 로드 및 전체 화면 맵 마운트 로직 추가
+- [x] feat: 지도 `idle` 이벤트(드래그/줌) 발생 시 Debounce 처리하여 백엔드에 클러스터 API 호출 연동
+- [ ] feat: 백엔드 응답(Mode: marker/cluster)을 받아 지도 위에 마커 렌더링 로직 구현 (현재 진행 중)
 - [ ] feat: 맵 상태(위경도, 줌레벨)를 URL Query Param과 동기화하는 로직 구현
 - [ ] feat: 상단 헤더 및 검색창(`GSearchBox`) 레이아웃 추가 (자동완성 UI 틀)
-- [ ] feat: 지도 `idle` 이벤트(드래그/줌) 발생 시 Debounce 처리하여 백엔드에 Bounding Box 기반 클러스터 API 호출
-- [ ] feat: 백엔드 응답을 받아 지도 위에 클러스터 마커 및 개별 아파트 마커 렌더링
 - [ ] feat: 상단 검색창 자동완성 API 연동 및 클릭 시 해당 지역/매물로 지도 이동
 
 ## Phase 3: Property Detail Panel (VIP 2 - 매물 상세 좌측 패널)
@@ -35,14 +35,11 @@
 
 - [ ] feat: 좌측 패널 내 '매물 의견(커뮤니티)' 탭 레이아웃 구현
 - [ ] feat: 특정 매물에 태그된 스레드 리스트 무한 스크롤(Infinite Query) 조회 연동
-- [ ] feat: 스레드 작성 폼 및 게시 API 연동 (매물 태그 자동 주입)
 
 ---
 
-## 💡 Additional / Low Priority Tasks (추후 고도화 및 부가 기능)
+## 💡 Additional / Low Priority Tasks
 
 - [ ] feat(chart): 실거래가 차트에 과거 시점 비트코인 종가 기준 환산가(`Price in BTC`) 오버레이 렌더링
-- [ ] feat(auth): 이메일 로그인/회원가입 모달 및 API 연동 (HttpOnly 쿠키 기반 JWT 세션 처리)
-- [ ] feat(auth): 소셜 로그인(Kakao, Naver) OAuth 연동 및 기존 이메일 계정 병합 로직
-- [ ] feat(community): 전역 커뮤니티 피드 패널(`/community`) 및 글 작성 시 `$매물명` 자동완성 태깅 기능
+- [ ] feat(auth): 이메일 로그인/회원가입 모달 및 API 연동
 - [ ] feat(seo): `sitemap.xml` 동적 생성 엔드포인트 구현 (주요 대형 단지 아파트 인덱싱)
