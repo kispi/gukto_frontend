@@ -1,10 +1,8 @@
 <script lang="ts">
 	import '$lib/assets/styles/index.css'
 	import favicon from '$lib/assets/favicon.svg'
-	import GHeader from '$lib/components/GHeader.svelte'
+	import SidePanel from '$lib/components/SidePanel.svelte'
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query'
-
-	let { children } = $props()
 
 	const queryClient = new QueryClient({
 		defaultOptions: {
@@ -14,8 +12,14 @@
 			},
 		},
 	})
+	import type { Snippet } from 'svelte'
 	import ModalContainer from '$lib/modal/ModalContainer.svelte'
 	import ToastContainer from '$lib/modal/ToastContainer.svelte'
+	import { theme, type Theme } from '$lib/theme/theme.svelte'
+
+	let { children, data } = $props<{ children: Snippet; data: { theme: Theme } }>()
+
+	theme.init(data.theme)
 </script>
 
 <svelte:head>
@@ -24,14 +28,14 @@
 </svelte:head>
 
 <QueryClientProvider client={queryClient}>
-	<div class="layout-root relative h-dvh w-screen overflow-hidden">
-		<!-- 헤더는 전역으로 노출 -->
-		<div class="pointer-events-none relative z-10 flex h-full w-full flex-col">
-			<GHeader />
-			<main class="pointer-events-auto relative flex-1 overflow-hidden">
-				{@render children()}
-			</main>
-		</div>
+	<div class="layout-root relative h-dvh w-screen overflow-hidden bg-main">
+		<!-- 메인 콘텐츠 (지도 등) - 화면 전체를 채움 -->
+		<main class="absolute inset-0 z-0">
+			{@render children()}
+		</main>
+
+		<!-- 통합 사이드바 (검색 + 상세 정보) -->
+		<SidePanel />
 
 		<!-- 모달 시스템 -->
 		<ModalContainer />

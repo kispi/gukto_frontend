@@ -14,12 +14,12 @@
 </script>
 
 <div class="modal-header modal-header-container">
-	<h3 class="text-main text-lg leading-tight font-bold">
+	<h3 class="text-lg leading-tight font-bold text-main">
 		{title}
 	</h3>
 	<button
 		type="button"
-		class="text-muted -mr-2 rounded-full p-2 transition-colors hover:bg-gray-50 hover:text-gray-600"
+		class="-mr-2 rounded-full p-2 text-muted transition-colors hover:bg-gray-50 hover:text-gray-600"
 		onclick={handleClose}
 	>
 		<X size={20} />

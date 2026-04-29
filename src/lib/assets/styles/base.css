@@ -1,21 +1,50 @@
-@layer components {
-	.text-main {
-		@apply text-gray-900;
-	}
+@theme {
+	--color-main: #ffffff;
+	--color-sub: #f8fafc;
+	--color-panel: #ffffff;
+	--color-input: #f1f5f9;
+	--color-content: #0f172a;
+	--color-content-sub: #475569;
+	--color-muted: #94a3b8;
+	--color-line: #f1f5f9;
+	--shadow-premium: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	--spacing-sidebar: 400px;
+}
 
-	.text-sub {
-		@apply text-gray-600;
-	}
+.dark {
+	--color-main: #0f172a;
+	--color-sub: #1e293b;
+	--color-panel: #1e293b;
+	--color-input: #0f172a;
+	--color-content: #f8fafc;
+	--color-content-sub: #94a3b8;
+	--color-muted: #64748b;
+	--color-line: #1e293b;
+	--shadow-premium: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+}
 
-	.text-muted {
-		@apply text-gray-400;
-	}
-
-	.border-base {
-		@apply border-gray-100;
-	}
-
-	.bg-slate-50 {
-		@apply bg-slate-50;
-	}
+/* Semantic Utility Aliases for consistency */
+.bg-main {
+	@apply bg-main;
+}
+.bg-sub {
+	@apply bg-sub;
+}
+.bg-panel {
+	@apply bg-panel;
+}
+.bg-input {
+	@apply bg-input;
+}
+.text-main {
+	@apply text-content;
+}
+.text-sub {
+	@apply text-content-sub;
+}
+.border-base {
+	@apply border-line;
+}
+.shadow-premium {
+	@apply shadow-premium;
 }

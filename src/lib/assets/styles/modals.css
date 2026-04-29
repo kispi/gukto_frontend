@@ -4,14 +4,14 @@
 	}
 
 	.modal-body {
-		@apply w-full max-w-md overflow-hidden rounded-lg bg-white shadow-2xl;
+		@apply w-full max-w-md overflow-hidden rounded-lg bg-main shadow-2xl;
 	}
 
 	.modal-header-container {
-		@apply flex items-center justify-between border-b border-gray-100 p-4;
+		@apply flex items-center justify-between border-b border-line p-4;
 	}
 
 	.modal-footer-container {
-		@apply flex items-center justify-end gap-3 bg-gray-50/50 p-4;
+		@apply flex items-center justify-end gap-3 bg-sub p-4;
 	}
 }

@@ -3,6 +3,7 @@
 ## 0. Workflow
 
 - 작업이 끝나면 conventional git commit을 **영어로 제안**합니다.
+  - 커밋 메시지를 추천하기 전, 반드시 린트(`npm run lint`)를 실행하여 에러가 없는지 확인하고, 발견된 모든 문제를 수정한 뒤 사용자에게 완료 보고를 해야 합니다.
   - 커밋 메시지를 추천하기 전, 반드시 `git log`로 최근 히스토리를 확인하고 현재 스테이징된 파일(`git diff --cached`)을 점검하여 맥락에 맞는 메시지를 작성하세요.
   - 필요한 경우 타이틀 뿐 아니라 본문도 작성할 수 있습니다.
 
@@ -15,6 +16,7 @@
 - Styling: Tailwind CSS (PostCSS)
 - Testing: Playwright (E2E), Vitest (Unit)
 - Tooling: Husky (pre-commit commitlint), ESLint, Prettier
+  - **Commit Message Limit:** `commitlint` 규칙에 따라 커밋 메시지 헤더(첫 줄)는 **100자**를 초과할 수 없습니다.
 
 ## 2. Strict Coding Standards
 
@@ -29,6 +31,7 @@
   - 모든 컴포넌트의 루트 HTML 엘리먼트에는 컴포넌트명을 `dash-case(kebab-case)`로 변환하여 `class` 속성에 부여해야 합니다.
   - 예: `ModalBasic.svelte` -> `<div class="modal-basic bg-white ...">`
 - **Linting & Formatting:** No semicolons (Prettier config: `semi: false`), use single quotes (`'`) for strings over double quotes.
+- **Tailwind Anti-Patterns:** 가급적 대괄호를 사용하는 임의 값(`h-[100dvh]`, `w-[400px]` 등) 사용을 금지합니다. Tailwind 표준 유틸리티를 사용하거나, 필요한 경우 CSS 모듈(시맨틱 클래스)에 정의하여 사용하세요.
 
 ## 3. UI/UX Rules
 

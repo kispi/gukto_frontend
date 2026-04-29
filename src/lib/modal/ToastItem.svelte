@@ -31,10 +31,10 @@
 	transition:fly={{ y: 20, duration: 300 }}
 >
 	<Icon size={20} class="flex-shrink-0" />
-	<span class="text-sub flex-1 text-sm font-medium">{item.message}</span>
+	<span class="flex-1 text-sm font-medium text-sub">{item.message}</span>
 	<button
 		type="button"
-		class="text-muted -mr-1 p-1 transition-colors hover:text-gray-600"
+		class="-mr-1 p-1 text-muted transition-colors hover:text-gray-600"
 		onclick={() => toast.remove(item.id)}
 	>
 		<X size={16} />

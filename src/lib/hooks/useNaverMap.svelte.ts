@@ -35,7 +35,7 @@ export const useNaverMap = () => {
 		mapInstance = new window.naver.maps.Map(element, {
 			center: new window.naver.maps.LatLng(37.5666805, 126.9784147), // 일단은 서울시청, 나중에는 1. URL의 LatLng 2. 마지막으로 본 위치 3. 사용자의 위치 순으로 설정.
 			zoom: 15,
-			mapTypeControl: true,
+			mapTypeControl: false,
 			...options,
 		})
 

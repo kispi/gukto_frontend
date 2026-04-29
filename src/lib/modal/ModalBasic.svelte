@@ -24,7 +24,7 @@
 
 		<!-- Body -->
 		<div class="p-4">
-			<p class="text-sub leading-relaxed whitespace-pre-wrap">
+			<p class="leading-relaxed whitespace-pre-wrap text-sub">
 				{message}
 			</p>
 		</div>

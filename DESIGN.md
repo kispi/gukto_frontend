@@ -16,6 +16,19 @@
 
 - 특별한 브랜딩 요구사항이 없는 한 `rounded-full`이나 `rounded-2xl` 등의 과도한 곡률은 지양합니다.
 
+### Visual Symmetry & Alignment (대칭 및 정렬)
+
+전문적인 UI를 위해 인접한 상호작용 요소 간의 **'키맞춤(Height Alignment)'**과 **대칭성**을 최우선으로 고려합니다.
+
+- 동일 선상에 있는 컴포넌트(예: 검색바와 기능 버튼)는 물리적인 높이(`height`)가 완벽하게 일치해야 합니다.
+- 유동적인 패딩보다는 고정 높이 유틸리티(`h-10`, `h-12` 등)를 사용하여 시각적 파편화를 방지하세요.
+
+### Interactive Affordance
+
+사용자 상호작용이 가능한 모든 요소(버튼, 링크, 토글 가능한 아이콘 등)는 반드시 **`cursor: pointer`** 속성을 가져야 합니다.
+
+- Tailwind 클래스 `cursor-pointer`를 활용하거나 CSS 모듈에서 정의하세요.
+
 ### No Hardcoded Colors in Logic
 
 컴포넌트 로직, 스토어, 템플릿 내에서 구체적인 '색상명'이 포함된 Tailwind 유틸리티 클래스(`bg-white`, `text-blue-500` 등)를 직접 사용하는 것을 금지합니다.
