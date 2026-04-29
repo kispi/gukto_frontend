@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './layout.css'
+	import '$lib/assets/styles/index.css'
 	import favicon from '$lib/assets/favicon.svg'
 	import GHeader from '$lib/components/GHeader.svelte'
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query'
@@ -14,6 +14,8 @@
 			},
 		},
 	})
+	import ModalContainer from '$lib/modal/ModalContainer.svelte'
+	import ToastContainer from '$lib/modal/ToastContainer.svelte'
 </script>
 
 <svelte:head>
@@ -30,5 +32,9 @@
 				{@render children()}
 			</main>
 		</div>
+
+		<!-- 모달 시스템 -->
+		<ModalContainer />
+		<ToastContainer />
 	</div>
 </QueryClientProvider>

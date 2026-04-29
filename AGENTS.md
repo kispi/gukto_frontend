@@ -32,12 +32,11 @@
 
 ## 3. UI/UX Rules
 
-- **UI Lib:** Tailwind CSS로 직접 구현합니다. 또한, 산발적으로 utility class를 남발하여 readability를 해치지 말고, 적절한 커스텀 컴포넌트 또는 커스텀 클래스(ex: `btn-primary`, `btn-default`...)로 캡슐화하세요. **프로젝트 전체를 통틀어 최소한의 utility class가 사용되고도 동일한 효과를 거둘 수 있어야 합니다.**
-- **Allowed Third-Party Libs:** 날짜 처리는 `dayjs`만 허용합니다. 비슷한 기능이라면 항상 번들 사이즈가 작은 패키지를 선택해야 합니다.
+- **Design Standard:** 디자인 철학 및 시각적 표준(Border Radius, Semantic Colors 등)에 대해서는 반드시 **[DESIGN.md](./DESIGN.md)**를 참고하여 구현해야 합니다.
+- **UI Implementation:** Tailwind CSS를 사용하되, 산발적으로 utility class를 남발하지 말고 적절한 커스텀 컴포넌트나 시맨틱 클래스로 캡슐화합니다. 특히 컴포넌트 로직이나 스토어 내에 구체적인 색상 utility class를 직접 입력하는 것을 지양합니다.
+- **Allowed Third-Party Libs:** 날짜 처리는 `dayjs`만 허용하며, 비슷한 기능이라면 항상 번들 사이즈가 작은 패키지를 선택합니다.
 - **No Native Alerts:** 브라우저 내장 `alert()`, `confirm()`, `prompt()` 사용을 금지합니다.
-- **Custom Modal System:** 전역 모달 시스템은 스토어(Runes) 기반으로 구성하며, 호출 시 다음과 같은 패턴을 사용해야 합니다.
-  - ✅ `modal.custom({ component: ModalBasic, props: { title: '알림' } })`
-  - 위 `custom` 메소드를 이용해 `modal.alert(...)` 또는 `modal.confirm(...)` 형태로 쓸 수 있는 sugar를 구현합니다.
+- **Custom Modal System:** 전역 모달 시스템은 스토어(Runes) 기반으로 구성하며, 호출 시 `modal.custom({ component, props })` 패턴을 사용합니다.
 
 ## 4. API & Data Fetching Architecture
 

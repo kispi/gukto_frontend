@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@import './base.css';
+@import './buttons.css';
+@import './modals.css';
+@import './toasts.css';

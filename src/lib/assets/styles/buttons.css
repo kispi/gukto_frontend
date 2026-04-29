@@ -1,0 +1,17 @@
+@layer components {
+	.btn-primary {
+		@apply rounded-lg bg-orange-500 text-white shadow-md shadow-orange-200 hover:bg-orange-600;
+	}
+
+	.btn-default {
+		@apply rounded-lg border border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50;
+	}
+
+	.btn-icon {
+		@apply flex h-10 w-10 items-center justify-center rounded-lg bg-white text-slate-500 shadow-lg transition-all hover:bg-slate-50 active:scale-95;
+	}
+
+	.btn-search {
+		@apply rounded-lg bg-blue-500 p-2 text-white transition-colors hover:bg-blue-600;
+	}
+}

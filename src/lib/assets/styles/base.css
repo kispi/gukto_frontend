@@ -1,0 +1,21 @@
+@layer components {
+	.text-main {
+		@apply text-gray-900;
+	}
+
+	.text-sub {
+		@apply text-gray-600;
+	}
+
+	.text-muted {
+		@apply text-gray-400;
+	}
+
+	.border-base {
+		@apply border-gray-100;
+	}
+
+	.bg-slate-50 {
+		@apply bg-slate-50;
+	}
+}

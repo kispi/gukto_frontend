@@ -34,10 +34,10 @@
 	})
 </script>
 
-<div class="g-map relative h-full w-full bg-slate-100">
+<div class="g-map relative h-full w-full bg-slate-50">
 	<div bind:this={mapElement} class="absolute inset-0 h-full w-full"></div>
 	{#if !naverMap.isLoaded}
-		<div class="absolute inset-0 flex items-center justify-center text-slate-400">
+		<div class="text-muted absolute inset-0 flex items-center justify-center">
 			지도를 불러오는 중...
 		</div>
 	{/if}

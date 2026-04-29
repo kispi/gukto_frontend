@@ -1,0 +1,17 @@
+@layer components {
+	.modal-backdrop {
+		@apply fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm;
+	}
+
+	.modal-body {
+		@apply w-full max-w-md overflow-hidden rounded-lg bg-white shadow-2xl;
+	}
+
+	.modal-header-container {
+		@apply flex items-center justify-between border-b border-gray-100 p-4;
+	}
+
+	.modal-footer-container {
+		@apply flex items-center justify-end gap-3 bg-gray-50/50 p-4;
+	}
+}

@@ -1,0 +1,21 @@
+@layer components {
+	.toast-item-base {
+		@apply flex min-w-[280px] items-center gap-3 rounded-lg border px-4 py-3 shadow-xl;
+	}
+
+	.toast-info {
+		@apply border-blue-100 bg-white text-blue-600 shadow-blue-50;
+	}
+
+	.toast-success {
+		@apply border-green-100 bg-white text-green-600 shadow-green-50;
+	}
+
+	.toast-warning {
+		@apply border-orange-100 bg-white text-orange-600 shadow-orange-50;
+	}
+
+	.toast-error {
+		@apply border-red-100 bg-white text-red-600 shadow-red-50;
+	}
+}

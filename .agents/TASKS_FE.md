@@ -10,7 +10,7 @@
 - [x] build: SvelteKit, Tailwind 스캐폴딩 및 `adapter-node` 설정
 - [x] config: ESLint, Prettier, Husky(commitlint) 룰 세팅 (No `function`, No Semicolon 등)
 - [x] feat: 커스텀 Fetch 래퍼(`apiClient.ts`) 구현 (Base URL 및 에러 핸들링)
-- [ ] feat: Svelte 5 Runes(`$state`) 기반 전역 Modal, Toast 스토어(`modalStore.ts`) 및 렌더러 구현
+- [x] feat: Svelte 5 Runes(`$state`) 기반 전역 Modal, Toast 스토어 및 렌더러 구현
 - [ ] feat: 기본 헤드리스 UI 컴포넌트(`GButton`, `GInput`, `GDropdown`) 뼈대 작성
 
 ## Phase 2: Core Map Layout & Search (VIP 1 - 지도 및 검색) - 🚧 진행 중
