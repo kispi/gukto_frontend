@@ -22,9 +22,20 @@ export type MarkerItem = {
 	area: number
 }
 
+export type ClusterItem = {
+	type: 'cluster'
+	lat: number
+	lng: number
+	count: number
+	regionName: string
+	avgPrice: string
+}
+
+export type MapItem = MarkerItem | ClusterItem
+
 export type MapResponse = {
 	mode: 'marker' | 'cluster'
-	items: MarkerItem[]
+	items: MapItem[]
 	total: number
 }
 

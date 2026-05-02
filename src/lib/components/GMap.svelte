@@ -2,7 +2,7 @@
 	import { useNaverMap } from '$lib/hooks/useNaverMap.svelte'
 	import { getMapState } from '$lib/map/GMapHandlers'
 	import { useMapProperties } from '$lib/map/useMapProperties.svelte'
-	import type { MapSearchParams } from '$lib/api/map'
+	import type { MapSearchParams, MarkerItem, ClusterItem } from '$lib/api/map'
 	import { markerTooltip } from '$lib/ui'
 
 	let mapElement: HTMLDivElement | null = $state(null)
@@ -43,14 +43,15 @@
 		listeners = []
 
 		if (properties.data.mode === 'marker') {
-			markers = properties.data.items.map((item) => {
+			markers = (properties.data.items as MarkerItem[]).map((item) => {
+				const hasPrice = item.price && item.price !== '-'
 				const contentString = `
 					<div class="relative flex flex-col items-center justify-center -translate-x-1/2 -translate-y-full cursor-pointer">
-						<div class="relative z-10 flex items-center gap-1 rounded-md bg-panel px-2 py-1 text-xs font-semibold text-main shadow-premium ring-1 ring-border">
-							<span class="text-orange-500">${item.area}평</span>
-							<span>${item.price}</span>
+						<div class="relative z-10 flex items-center gap-1 rounded-md bg-panel px-2 py-1 text-xs font-semibold text-main shadow-premium ring-1 ring-line">
+							${item.area ? `<span class="text-orange-500">${item.area}평</span>` : ''}
+							<span>${hasPrice ? item.price : item.name}</span>
 						</div>
-						<div class="absolute -bottom-1.5 z-0 h-3 w-3 rotate-45 border-b border-r border-border bg-panel shadow-sm"></div>
+						<div class="absolute -bottom-1.5 z-0 h-3 w-3 rotate-45 border-b border-r border-line bg-panel shadow-sm"></div>
 					</div>
 				`
 
@@ -59,7 +60,7 @@
 					map: map,
 					icon: {
 						content: contentString,
-						anchor: new window.naver.maps.Point(0, 0), // offset is handled in css
+						anchor: new window.naver.maps.Point(0, 0),
 					},
 					zIndex: 10,
 				})
@@ -89,10 +90,15 @@
 				return marker
 			})
 		} else if (properties.data.mode === 'cluster') {
-			markers = properties.data.items.map((item) => {
+			markers = (properties.data.items as ClusterItem[]).map((item) => {
+				const hasPrice = item.avgPrice && item.avgPrice !== '-'
 				const contentString = `
-					<div class="flex items-center justify-center w-12 h-12 rounded-full bg-panel text-main font-bold shadow-premium ring-2 ring-orange-500/80 hover:bg-sub cursor-pointer transition-colors -translate-x-1/2 -translate-y-1/2">
-						${item.count}
+					<div class="flex flex-col items-center justify-center -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+						<div class="flex flex-col items-center gap-0.5 rounded-xl bg-panel px-3 py-2 shadow-premium ring-1 ring-line">
+							<span class="text-sm font-bold text-main">${item.regionName}</span>
+							${hasPrice ? `<span class="text-xs font-semibold text-orange-500">${item.avgPrice}</span>` : ''}
+							<span class="text-xs text-muted">${item.count}개 단지</span>
+						</div>
 					</div>
 				`
 
