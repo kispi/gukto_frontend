@@ -11,7 +11,7 @@
 		Moon,
 		Search,
 	} from 'lucide-svelte'
-	import { theme } from '$lib/theme/theme.svelte'
+	import { theme } from '$lib/theme/theme.svelte.js'
 	import { toast } from '$lib/ui/toast.svelte'
 
 	let isDetailOpen = $state(false) // 단지 상세 정보가 열렸는지 여부

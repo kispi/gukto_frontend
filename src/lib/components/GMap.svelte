@@ -29,7 +29,7 @@
 
 	// 데이터 확인용 로그 및 마커 렌더링
 	let markers: naver.maps.Marker[] = []
-	let listeners: window.naver.maps.MapEventListener[] = []
+	let listeners: naver.maps.MapEventListener[] = []
 
 	$effect(() => {
 		if (!naverMap.mapInstance || !properties.data) return

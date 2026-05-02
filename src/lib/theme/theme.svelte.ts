@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie'
 import { browser } from '$app/environment'
 
 export type Theme = 'light' | 'dark'
@@ -15,7 +14,7 @@ const createThemeStore = () => {
 	const set = (newTheme: Theme) => {
 		currentTheme = newTheme
 		if (browser) {
-			Cookies.set('theme', newTheme, { expires: 365, path: '/' })
+			document.cookie = `theme=${newTheme}; max-age=31536000; path=/`
 			apply(newTheme)
 		}
 	}
@@ -26,8 +25,9 @@ const createThemeStore = () => {
 		},
 		set,
 		init: (initial: Theme) => {
-			currentTheme = initial || 'light'
-			apply(currentTheme)
+			const initTheme = initial || 'light'
+			currentTheme = initTheme
+			apply(initTheme)
 		},
 		toggle: () => {
 			const next: Theme = currentTheme === 'light' ? 'dark' : 'light'

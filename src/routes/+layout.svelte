@@ -16,7 +16,7 @@
 	import ModalContainer from '$lib/components/app/modal/ModalContainer.svelte'
 	import ToastContainer from '$lib/components/app/toast/ToastContainer.svelte'
 	import MarkerTooltipContainer from '$lib/components/app/marker-tooltip/MarkerTooltipContainer.svelte'
-	import { theme, type Theme } from '$lib/theme/theme.svelte'
+	import { theme, type Theme } from '$lib/theme/theme.svelte.js'
 
 	let { children, data } = $props<{ children: Snippet; data: { theme: Theme } }>()
 

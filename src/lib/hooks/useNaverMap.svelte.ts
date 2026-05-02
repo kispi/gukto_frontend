@@ -1,6 +1,7 @@
 /// <reference types="navermaps" />
 import { env } from '$env/dynamic/public'
 import { onMount } from 'svelte'
+import { mapController } from '$lib/map/mapController.svelte.js'
 
 export const useNaverMap = () => {
 	let isLoaded = $state(false)
@@ -39,12 +40,19 @@ export const useNaverMap = () => {
 			...options,
 		})
 
-		// idle 이벤트 리스너 등록
-		window.naver.maps.Event.addListener(mapInstance, 'idle', () => {
+		mapController.setMap(mapInstance)
+
+		const updateBounds = () => {
 			if (!mapInstance) return
 			const b = mapInstance.getBounds() as naver.maps.LatLngBounds
 			bounds = { sw: b.getSW(), ne: b.getNE() }
-		})
+		}
+
+		// idle 이벤트 리스너 등록
+		window.naver.maps.Event.addListener(mapInstance, 'idle', updateBounds)
+
+		// 초기 1회 바운드 설정하여 바로 마커 로드
+		updateBounds()
 	}
 
 	onMount(() => {
