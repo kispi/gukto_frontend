@@ -33,7 +33,21 @@
 - **Linting & Formatting:** No semicolons (Prettier config: `semi: false`), use single quotes (`'`) for strings over double quotes.
 - **Tailwind Anti-Patterns:** 가급적 대괄호를 사용하는 임의 값(`h-[100dvh]`, `w-[400px]` 등) 사용을 금지합니다. Tailwind 표준 유틸리티를 사용하거나, 필요한 경우 CSS 모듈(시맨틱 클래스)에 정의하여 사용하세요.
 
-## 3. UI/UX Rules
+## 3. Svelte 5 Reactivity (Runes)
+
+- **Maintaining Prop Reactivity:** `$props()`로 전달받은 값을 스크립트 최상위(Top-level)에서 지역 변수에 할당하거나 초기화 함수에 직접 전달하는 것을 금지합니다. 이는 초기값만 캡처(`state_referenced_locally`)하여 반응성이 소실되는 원인이 됩니다.
+- **Use `$derived` for values:** 다른 상태나 prop으로부터 파생되는 값은 반드시 `$derived`를 사용합니다.
+  - ❌ `const user = data.user`
+  - ✅ `const user = $derived(data.user)`
+- **Use `$effect` for side effects:** prop 변경에 따라 사이드 이펙트(함수 호출, 외부 상태 동기화 등)를 실행해야 할 경우 반드시 `$effect`로 감싸야 합니다.
+  - ❌ `theme.init(data.theme)`
+  - ✅ `$effect(() => { theme.init(data.theme) })`
+- **Hook Return Pattern:** Svelte 5 커스텀 훅(Runes 기반)에서 상태를 반환할 때, primitive 값의 반응성을 유지하면서 중첩 없이(`hook.isLoaded`) 접근하기 위해 **getter 패턴**을 사용하는 것을 권장합니다.
+  - ✅ `return { get count() { return count }, inc() { ... } };` (중첩 없이 반응성 유지)
+  - ❌ `let count = $state(0); return { count };` (반응성 소실)
+  - 만약 상태가 많고 구조가 복잡하다면 하나의 `$state` 객체에 담아 반환할 수도 있으나, 사용 편의성을 위해 가급적 flat한 구조를 유지합니다.
+
+## 4. UI/UX Rules
 
 - **Design Standard:** 디자인 철학 및 시각적 표준(Border Radius, Semantic Colors 등)에 대해서는 반드시 **[DESIGN.md](./DESIGN.md)**를 참고하여 구현해야 합니다.
 - **UI Implementation:** Tailwind CSS를 사용하되, 산발적으로 utility class를 남발하지 말고 적절한 커스텀 컴포넌트나 시맨틱 클래스로 캡슐화합니다. 특히 컴포넌트 로직이나 스토어 내에 구체적인 색상 utility class를 직접 입력하는 것을 지양합니다.
@@ -41,19 +55,15 @@
 - **No Native Alerts:** 브라우저 내장 `alert()`, `confirm()`, `prompt()` 사용을 금지합니다.
 - **Custom Modal System:** 전역 모달 시스템은 스토어(Runes) 기반으로 구성하며, 호출 시 `modal.custom({ component, props })` 패턴을 사용합니다.
 
-## 4. API & Data Fetching Architecture
+## 5. API & Data Fetching Architecture
 
 - 프론트엔드에서 DB에 직접 접근하는 것은 금지되어 있습니다.
 - SSR이 필요한 페이지(SEO 대상, 예: 아파트 상세정보)는 `+page.server.ts`의 `load` 함수 내에서 Go 백엔드 REST API를 호출하여 데이터를 렌더링합니다.
 - CSR이 필요한 상호작용(지도 드래그, 무한 스크롤 피드 등)은 TanStack Query를 사용합니다.
 - 모든 API 호출은 커스텀 `fetch` 래퍼를 사용하며, 향후 JWT Bearer Token을 쿠키에서 추출해 헤더에 주입하기 쉽도록 설계되어야 합니다.
 
-## 5. File Structure & Clean Code
+## 6. File Structure & Clean Code
 
 - 코드가 길어지거나 하위 컴포넌트가 파생될 경우, 즉시 폴더를 생성하여 관련된 코드(컴포넌트, 타입, 유틸)를 Co-location(밀집) 시킵니다.
 - 비즈니스 로직(데이터 파싱, 계산 로직 등)은 Svelte 컴포넌트 내부에 두지 않고 외부 `.ts` 파일로 분리하여 테스트 가능하게 작성합니다.
-- **Hook Return Pattern:** Svelte 5 커스텀 훅(Runes 기반)에서 상태를 반환할 때, primitive 값의 반응성을 유지하면서 중첩 없이(`hook.isLoaded`) 접근하기 위해 **getter 패턴**을 사용하는 것을 권장합니다.
-  - ✅ `return { get count() { return count }, inc() { ... } };` (중첩 없이 반응성 유지)
-  - ❌ `let count = $state(0); return { count };` (반응성 소실)
-  - 만약 상태가 많고 구조가 복잡하다면 하나의 `$state` 객체에 담아 반환할 수도 있으나, 사용 편의성을 위해 가급적 flat한 구조를 유지합니다.
 - **Formatting:** No semicolons, use single quotes, and **always use trailing commas** (Prettier config: `trailingComma: 'all'`).

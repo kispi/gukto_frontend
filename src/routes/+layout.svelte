@@ -19,7 +19,9 @@
 
 	let { children, data } = $props<{ children: Snippet; data: { theme: Theme } }>()
 
-	theme.init(data.theme)
+	$effect(() => {
+		theme.init(data.theme)
+	})
 </script>
 
 <svelte:head>
