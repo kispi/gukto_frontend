@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade, scale } from 'svelte/transition'
-	import { modal } from './modal.svelte'
+	import { modal } from '$lib/ui'
 
 	let { children, onClose } = $props<{
 		children: import('svelte').Snippet

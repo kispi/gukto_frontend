@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { modal } from './modal.svelte'
+	import { modal } from '$lib/ui'
 
 	const { items } = $derived(modal)
 </script>

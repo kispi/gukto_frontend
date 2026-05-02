@@ -9,7 +9,7 @@ export type MapSearchParams = {
 	type?: string // comma-separated: 'APT,OFFI'
 }
 
-export interface MarkerItem {
+export type MarkerItem = {
 	type: 'marker'
 	id: string
 	name: string
@@ -17,9 +17,12 @@ export interface MarkerItem {
 	lat: number
 	lng: number
 	buildYear: number
+	address: string
+	price: string
+	area: number
 }
 
-export interface MapResponse {
+export type MapResponse = {
 	mode: 'marker' | 'cluster'
 	items: MarkerItem[]
 	total: number

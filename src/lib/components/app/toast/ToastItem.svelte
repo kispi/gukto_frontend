@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition'
-	import { type ToastOptions } from './toast.svelte'
+	import { type ToastOptions, toast } from '$lib/ui/toast.svelte'
 	import { Info, CircleCheck, TriangleAlert, CircleX, X } from 'lucide-svelte'
-	import { toast } from './toast.svelte'
 
 	let { item } = $props<{ item: ToastOptions }>()
 

@@ -12,7 +12,7 @@
 		Search,
 	} from 'lucide-svelte'
 	import { theme } from '$lib/theme/theme.svelte'
-	import { toast } from '$lib/modal/toast.svelte'
+	import { toast } from '$lib/ui/toast.svelte'
 
 	let isDetailOpen = $state(false) // 단지 상세 정보가 열렸는지 여부
 	let isListExpanded = $state(true) // 리스트가 펼쳐졌는지 여부

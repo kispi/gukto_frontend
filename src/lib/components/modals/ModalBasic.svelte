@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { modal, type ModalButton } from './modal.svelte'
-	import ModalWrapper from './ModalWrapper.svelte'
-	import ModalHeader from './ModalHeader.svelte'
+	import { modal, type ModalButton } from '$lib/ui/modal.svelte'
+	import ModalWrapper from '$lib/components/app/modal/ModalWrapper.svelte'
+	import ModalHeader from '$lib/components/app/modal/ModalHeader.svelte'
 
 	let {
 		title = '',

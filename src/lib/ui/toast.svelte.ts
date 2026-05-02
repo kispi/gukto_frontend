@@ -1,4 +1,4 @@
-export interface ToastOptions {
+export type ToastOptions = {
 	id: string
 	message: string
 	type: 'info' | 'success' | 'warning' | 'error'

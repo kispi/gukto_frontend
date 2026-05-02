@@ -23,6 +23,7 @@
 - **NO `function` KEYWORD:** `function` 키워드 사용을 엄격히 금지합니다. 모든 함수(컴포넌트 로직, 유틸리티, API Fetcher 등)는 반드시 화살표 함수(Arrow Function)로 작성합니다.
   - ❌ `function loadData() {}`
   - ✅ `const loadData = async () => {}`
+- **Type vs Interface:** 프론트엔드 프로젝트에서는 `interface` 사용을 금지하고 항상 `type`을 사용합니다. 전역 객체(`Window` 등)를 확장(Declaration Merging)해야 하는 특수한 경우(`app.d.ts` 등)에만 예외적으로 `interface`를 허용합니다.
 - **Component Naming:**
   - 모든 컴포넌트 파일명은 최소 두 단어 이상의 `PascalCase`로 작성합니다. (예: `PriceChart.svelte`)
   - 적절한 두 단어가 없다면 Prefix `G` (Gukto)를 붙입니다. (예: `GDropdown.svelte`, `GButton.svelte`)

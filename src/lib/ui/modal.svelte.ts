@@ -1,13 +1,13 @@
 import type { Component } from 'svelte'
-import ModalBasic from './ModalBasic.svelte'
+import ModalBasic from '$lib/components/modals/ModalBasic.svelte'
 
-export interface ModalButton {
+export type ModalButton = {
 	text: string
 	class?: string
 	value?: unknown
 }
 
-export interface ModalOptions {
+export type ModalOptions = {
 	props?: Record<string, unknown>
 	resolve?: (value: unknown) => void
 }

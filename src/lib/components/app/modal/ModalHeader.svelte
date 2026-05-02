@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { X } from 'lucide-svelte'
-	import { modal } from './modal.svelte'
+	import { modal } from '$lib/ui'
 
 	let { title, onClose } = $props<{
 		title: string

@@ -13,8 +13,9 @@
 		},
 	})
 	import type { Snippet } from 'svelte'
-	import ModalContainer from '$lib/modal/ModalContainer.svelte'
-	import ToastContainer from '$lib/modal/ToastContainer.svelte'
+	import ModalContainer from '$lib/components/app/modal/ModalContainer.svelte'
+	import ToastContainer from '$lib/components/app/toast/ToastContainer.svelte'
+	import MarkerTooltipContainer from '$lib/components/app/marker-tooltip/MarkerTooltipContainer.svelte'
 	import { theme, type Theme } from '$lib/theme/theme.svelte'
 
 	let { children, data } = $props<{ children: Snippet; data: { theme: Theme } }>()
@@ -40,6 +41,7 @@
 		<SidePanel />
 
 		<!-- 모달 시스템 -->
+		<MarkerTooltipContainer />
 		<ModalContainer />
 		<ToastContainer />
 	</div>
